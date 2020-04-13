@@ -1,0 +1,44 @@
+{% load static %}
+{% block content %}
+<html>
+<head>
+	<title>Starfish task Tracker</title>
+	<!--link rel="stylesheet" type="text/css" href="{%static 'css/styles.css' %}">
+	<link rel="icon" href="{%static 'images/sfish.png'%}"-->
+	<link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&family=Bitter&family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<center>
+	<div class="topheader">
+		<h1> Starfish </h1>
+		<p class="headDes">Create daily To-Do Lists 🦄 </p>
+	</div>
+</div>
+	<div class="todoform">
+		<form method="POST" action="/">
+			{% csrf_token %}
+		    {{form.title}}
+			<!--input type="checkbox" name="cbox">
+			<input type="text" name="task" placeholder="Add task"-->
+			<input type="submit" name="savebtn" value="Add">
+			{% for task in tasks %}
+				<div>
+					<a href="{% url 'update' task.id %}">Update</a>
+					<a href="{% url 'delete' task.id %}">Delete</a>
+					{% if task.complete %}
+					<strike>✔{{task}}</strike>
+					{% else %}
+					<span>{{task}}</span>
+					{% endif %}
+					<br>
+				</div>
+			{% endfor %}
+			<!-- the above add button will add new tasks and display them -->
+		</form>
+	</div>
+</center>
+</body>
+</html>
+{% endblock %}
+
+
