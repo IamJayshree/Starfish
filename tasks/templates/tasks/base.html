@@ -1,0 +1,62 @@
+
+
+<html>
+<head>
+	<title>Starfish task Tracker</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&family=Bitter&family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
+	{% load static %}
+	<link rel="icon" href="{% static 'images/sfish.png' %}">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<style type="text/css">
+body {
+	background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+	font-family: 'Merriweather',Sans;
+}
+
+#bgcol {
+	background-color: white;
+	padding: 10px;
+	padding-bottom: 20px;
+}
+
+.topheader{
+	height: 200px;
+	width: 70%;
+	background-color: white;
+	padding: 50px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+}
+
+.fonstyle{
+	font-family: 'Cedarville Cursive', cursive;
+}
+
+.imgmain{
+	max-width: 180%;
+	max-height: 125%;
+}
+</style>
+
+<body>
+<center>
+	{% load static %}
+	<div class="container z-depth-4 " id = "bgcol" >
+	<div class="topheader">
+		<a href="{% static '/tasks/index' %}"><img class="imgmain" src="{% static 'images/header.png' %}" alt="yo!it's the logo i made"></a>
+		</div>
+	{% block content %}
+	{% endblock %}
+</div>
+</center>
+<!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+</body>
+</html>

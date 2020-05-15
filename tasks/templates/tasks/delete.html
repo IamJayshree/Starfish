@@ -1,8 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
 <p>Are you sure you want to delete the task - {{item}}?</p>
 <a href="{% url 'index' %}"> cancel</a>
 
 <form method="POST" action="">
     {% csrf_token %}
     {{form}}
-    <input type="submit" name="Confirm" value="Delete to-do">
+    <button class="btn waves-effect waves-light col s1  pink darken-1" type="submit" name="Confirm">Delete Task
+    <i class="material-icons right ">send</i>
+  	</button>
 </form>
+{% endblock %}

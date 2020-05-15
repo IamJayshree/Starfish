@@ -1,44 +1,37 @@
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<html>
-<head>
-	<title>Starfish task Tracker</title>
-	<!--link rel="stylesheet" type="text/css" href="{%static 'css/styles.css' %}">
-	<link rel="icon" href="{%static 'images/sfish.png'%}"-->
-	<link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2&family=Bitter&family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
-</head>
-<body>
-<center>
-	<div class="topheader">
-		<h1> Starfish </h1>
-		<p class="headDes">Create daily To-Do Lists 🦄 </p>
-	</div>
-</div>
 	<div class="todoform">
 		<form method="POST" action="/">
-			{% csrf_token %}
-		    {{form.title}}
-			<!--input type="checkbox" name="cbox">
-			<input type="text" name="task" placeholder="Add task"-->
-			<input type="submit" name="savebtn" value="Add">
+			<div class="row">
+				{% csrf_token %}
+			 <div class="input-field col s4 offset-s4 ">
+          <!--		<input id="add_todo" type="text" class="validate">
+          		<label for="{{form.title}}">Add new to-do</label> -->
+          		{{form.title}}
+        	</div>
+  			<button class="btn waves-effect waves-light col s1  pink darken-1" type="submit" name="savebtn">Add
+    			<i class="material-icons right ">send</i>
+  			</button>
+			</div>
+
 			{% for task in tasks %}
-				<div>
-					<a href="{% url 'update' task.id %}">Update</a>
-					<a href="{% url 'delete' task.id %}">Delete</a>
-					{% if task.complete %}
-					<strike>✔{{task}}</strike>
-					{% else %}
-					<span>{{task}}</span>
-					{% endif %}
-					<br>
-				</div>
+	<!-- customisation of tasks -->
+			<div class="row">
+		 	<div style="padding: 1rem" class = "offset-s4 col s4 z-depth-2  white lighten-1 hoverable" >{% if task.complete %}
+			<strike>✔{{task}}</strike>
+			{% else %}
+			<span>{{task}}</span>
+			{% endif %}</div>
+		 	<div class="col s1"><a class="btn-floating btn-medium waves-effect waves-light pink lighten-1 hoverable" href="{% url 'update' task.id %}" ><i class="material-icons">edit</i></a></div>
+		 	<div class="col s1"><a class="btn-floating btn-medium waves-effect waves-light pink lighten-1 hoverable" href="{% url 'delete' task.id %}"><i class="material-icons">delete</i></a></div>
+			<br>
+			</div>
 			{% endfor %}
-			<!-- the above add button will add new tasks and display them -->
 		</form>
+		<footer> Made with ❤️ by <a href="{% static 'https://www.instagram.com/iamcodegirl/' }">@iamcodegirl</a></footer>
 	</div>
-</center>
-</body>
-</html>
 {% endblock %}
+
 
 
