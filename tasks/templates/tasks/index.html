@@ -18,16 +18,17 @@
 			{% for task in tasks %}
 	<!-- customisation of tasks -->
 			<div class="row">
-		 	<div style="padding: 1rem" class = "offset-s4 col s4 z-depth-2  white lighten-1 hoverable" >{% if task.complete %}
-			<strike>✔{{task}}</strike>
+		 	<div style="padding: 1rem" class = "offset-s4 col s4 z-depth-2  white lighten-1 hoverable" >
+			{% if task.complete == True %}
+			  <strike>✔{{task}}</strike>
 			{% else %}
-			<span>{{task}}</span>
+		  	<span>{{task}}</span>
 			{% endif %}</div>
-		 	<div class="col s1"><a class="btn-floating btn-medium waves-effect waves-light pink lighten-1 hoverable" href="{% url 'update' task.id %}" ><i class="material-icons">edit</i></a></div>
-		 	<div class="col s1"><a class="btn-floating btn-medium waves-effect waves-light pink lighten-1 hoverable" href="{% url 'delete' task.id %}"><i class="material-icons">delete</i></a></div>
-			<br>
-			</div>
-			{% endfor %}
+        <div class="col s1"><a class="btn-floating btn-medium waves-effect waves-light pink lighten-1 hoverable" href="{% url 'update' task.id %}" ><i class="material-icons">edit</i></a></div>
+        <div class="col s1"><a class="btn-floating btn-medium waves-effect waves-light pink lighten-1 hoverable" href="{% url 'delete' task.id %}"><i class="material-icons">delete</i></a></div>
+        <br>
+        </div>
+      {% endfor %}
 		</form>
 		<footer> Made with ❤️ by <a href="{% static 'https://www.instagram.com/iamcodegirl/' }">@iamcodegirl</a></footer>
 	</div>
